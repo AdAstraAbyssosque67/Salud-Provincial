@@ -89,8 +89,8 @@ Solo para desarrollo. Las claves de prueba están indicadas en el encabezado de 
 | 2 | Estructura de la solución y capa de Entidades | Completada |
 | 3 | Capa de Acceso a Datos (Singleton de conexión y repositorios) | Completada |
 | 4 | Capa de Lógica de Negocio (servicios, sesión, permisos) | Completada |
-| 5 | Capa de Presentación (login y CRUD) | En Curso |
-| 6 | Pruebas de aislamiento y documentación | Pendiente |
+| 5 | Capa de Presentación (login y CRUD) | Completada |
+| 6 | Pruebas de aislamiento y documentación | Completada |
 
 ## Autor
 
