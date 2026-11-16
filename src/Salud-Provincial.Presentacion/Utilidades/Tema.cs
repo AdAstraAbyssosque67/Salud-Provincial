@@ -1,24 +1,40 @@
 using System.Drawing;
 using System.Windows.Forms;
+using Salud_Provincial.Presentacion.Controles;
 
 namespace Salud_Provincial.Presentacion
 {
-    /// <summary>Colores y estilos comunes (turquesa + naranja, fondo claro, diseño plano).</summary>
+    /// <summary>Paleta y estilos del sistema de diseño (estilo Bento: tarjetas, menta + azul cielo).</summary>
     internal static class Tema
     {
-        public static readonly Color Turquesa = Color.FromArgb(31, 181, 197);
-        public static readonly Color TurquesaOscuro = Color.FromArgb(18, 146, 159);
-        public static readonly Color TurquesaClaro = Color.FromArgb(222, 245, 248);
-        public static readonly Color Naranja = Color.FromArgb(245, 166, 35);
-        public static readonly Color NaranjaOscuro = Color.FromArgb(224, 146, 26);
-        public static readonly Color Fondo = Color.FromArgb(242, 245, 247);
-        public static readonly Color Texto = Color.FromArgb(44, 62, 80);
-        public static readonly Color TextoSuave = Color.FromArgb(127, 140, 141);
-        public static readonly Color Peligro = Color.FromArgb(217, 83, 79);
-        public static readonly Color PeligroClaro = Color.FromArgb(252, 235, 234);
-        public static readonly Color Exito = Color.FromArgb(46, 158, 107);
-        public static readonly Color Borde = Color.FromArgb(220, 226, 230);
-        public static readonly Color FilaInactiva = Color.FromArgb(238, 241, 242);
+        public static readonly Color Menta = Color.FromArgb(79, 209, 197);          // #4FD1C5
+        public static readonly Color Cielo = Color.FromArgb(66, 153, 225);          // #4299E1
+        public static readonly Color MentaOscuro = Color.FromArgb(49, 151, 149);
+        public static readonly Color MentaClaro = Color.FromArgb(230, 255, 250);
+        public static readonly Color Oscuro = Color.FromArgb(45, 55, 72);           // #2D3748
+        public static readonly Color Texto = Color.FromArgb(26, 32, 44);            // #1A202C
+        public static readonly Color TextoSuave = Color.FromArgb(113, 128, 150);    // #718096
+        public static readonly Color Fondo = Color.FromArgb(244, 246, 249);         // #F4F6F9
+        public static readonly Color Borde = Color.FromArgb(226, 232, 240);
+        public static readonly Color GrisHover = Color.FromArgb(237, 242, 247);
+        public static readonly Color Peligro = Color.FromArgb(229, 62, 62);
+        public static readonly Color PeligroClaro = Color.FromArgb(255, 245, 245);
+        public static readonly Color Exito = Color.FromArgb(56, 161, 105);
+        public static readonly Color FilaInactiva = Color.FromArgb(247, 250, 252);
+
+        private static readonly Dictionary<(float, bool), Font> _fuentes = new();
+
+        /// <summary>Fuente en caché. negrita = Segoe UI Semibold.</summary>
+        public static Font Fuente(float puntos, bool negrita = false)
+        {
+            var clave = (puntos, negrita);
+            if (!_fuentes.TryGetValue(clave, out var f))
+            {
+                f = new Font(negrita ? "Segoe UI Semibold" : "Segoe UI", puntos, FontStyle.Regular, GraphicsUnit.Point);
+                _fuentes[clave] = f;
+            }
+            return f;
+        }
 
         public static void Formulario(Form f)
         {
@@ -27,116 +43,73 @@ namespace Salud_Provincial.Presentacion
         }
 
         // ---------- Botones ----------
-        /// <summary>Acción principal (naranja): Ingresar, Guardar, Gestionar...</summary>
-        public static void BotonPrimario(Button b) => Estilo(b, Naranja, NaranjaOscuro, Color.White, Naranja);
-
-        /// <summary>Acción positiva (turquesa): Reactivar.</summary>
-        public static void BotonTurquesa(Button b) => Estilo(b, Turquesa, TurquesaOscuro, Color.White, Turquesa);
-
-        /// <summary>Acción secundaria (contorno turquesa): Nuevo, Cancelar, Salir.</summary>
-        public static void BotonSecundario(Button b) => Estilo(b, Color.White, TurquesaClaro, TurquesaOscuro, Turquesa);
-
-        /// <summary>Acción delicada (contorno rojo): Desactivar.</summary>
-        public static void BotonPeligro(Button b) => Estilo(b, Color.White, PeligroClaro, Peligro, Peligro);
-
-        /// <summary>Botón sobre un encabezado turquesa.</summary>
-        public static void BotonEncabezado(Button b) => Estilo(b, Turquesa, TurquesaOscuro, Color.White, Color.White);
-
-        /// <summary>Opción de la barra lateral.</summary>
-        public static void BotonLateral(Button b)
-        {
-            b.FlatStyle = FlatStyle.Flat;
-            b.FlatAppearance.BorderSize = 0;
-            b.FlatAppearance.MouseOverBackColor = TurquesaClaro;
-            b.FlatAppearance.MouseDownBackColor = TurquesaClaro;
-            b.BackColor = Color.White;
-            b.ForeColor = Texto;
-            b.Font = new Font("Segoe UI", 10.5F);
-            b.TextAlign = ContentAlignment.MiddleLeft;
-            b.Padding = new Padding(20, 0, 0, 0);
-            b.Cursor = Cursors.Hand;
-            b.UseVisualStyleBackColor = false;
-        }
-
-        private static void Estilo(Button b, Color fondo, Color hover, Color texto, Color borde)
-        {
-            b.FlatStyle = FlatStyle.Flat;
-            b.FlatAppearance.BorderSize = 1;
-            b.FlatAppearance.BorderColor = borde;
-            b.FlatAppearance.MouseOverBackColor = hover;
-            b.FlatAppearance.MouseDownBackColor = hover;
-            b.BackColor = fondo;
-            b.ForeColor = texto;
-            b.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            b.Cursor = Cursors.Hand;
-            b.UseVisualStyleBackColor = false;
-        }
+        public static void BotonPrimario(BotonPildora b) => b.Estilo(Oscuro, Color.FromArgb(26, 32, 44), Color.White, Color.Transparent);
+        public static void BotonSecundario(BotonPildora b) => b.Estilo(Color.White, GrisHover, Texto, Borde);
+        public static void BotonPeligro(BotonPildora b) => b.Estilo(Color.White, PeligroClaro, Peligro, Color.FromArgb(254, 178, 178));
+        public static void BotonAfirmativo(BotonPildora b) => b.Estilo(MentaOscuro, Color.FromArgb(44, 122, 123), Color.White, Color.Transparent);
 
         // ---------- Tabla ----------
         public static void Tabla(DataGridView g)
         {
             g.BorderStyle = BorderStyle.None;
             g.BackgroundColor = Color.White;
-            g.GridColor = Borde;
+            g.GridColor = GrisHover;
             g.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             g.RowHeadersVisible = false;
             g.EnableHeadersVisualStyles = false;
             g.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             g.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            g.ColumnHeadersHeight = 38;
-            g.RowTemplate.Height = 34;
+            g.ColumnHeadersHeight = 42;
+            g.RowTemplate.Height = 44;
 
-            var encabezado = g.ColumnHeadersDefaultCellStyle;
-            encabezado.BackColor = Turquesa;
-            encabezado.ForeColor = Color.White;
-            encabezado.SelectionBackColor = Turquesa;
-            encabezado.SelectionForeColor = Color.White;
-            encabezado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            encabezado.Padding = new Padding(6, 0, 6, 0);
+            var cab = g.ColumnHeadersDefaultCellStyle;
+            cab.BackColor = FilaInactiva;
+            cab.ForeColor = TextoSuave;
+            cab.SelectionBackColor = FilaInactiva;
+            cab.SelectionForeColor = TextoSuave;
+            cab.Font = Fuente(9.5F, true);
+            cab.Padding = new Padding(12, 0, 8, 0);
 
             var celda = g.DefaultCellStyle;
             celda.BackColor = Color.White;
             celda.ForeColor = Texto;
-            celda.SelectionBackColor = Naranja;     // fila elegida, como el horario elegido de la referencia
-            celda.SelectionForeColor = Color.White;
-            celda.Padding = new Padding(6, 0, 6, 0);
-
-            g.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(247, 252, 253);
-            g.AlternatingRowsDefaultCellStyle.SelectionBackColor = Naranja;
-            g.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.White;
+            celda.SelectionBackColor = MentaClaro;
+            celda.SelectionForeColor = Texto;
+            celda.Font = Fuente(10F);
+            celda.Padding = new Padding(12, 0, 8, 0);
         }
 
-        // ---------- Menú y barra de estado ----------
+        // ---------- Menú y barra de estado (se funden con el lienzo) ----------
         public static void Menu(MenuStrip m)
         {
             m.Renderer = new ToolStripProfessionalRenderer(new Colores()) { RoundedEdges = false };
-            m.BackColor = Color.White;
+            m.BackColor = Fondo;
             m.ForeColor = Texto;
-            m.Padding = new Padding(8, 4, 0, 4);
+            m.Padding = new Padding(10, 4, 0, 2);
         }
 
         public static void BarraEstado(StatusStrip s)
         {
             s.Renderer = new ToolStripProfessionalRenderer(new Colores()) { RoundedEdges = false };
-            s.BackColor = TurquesaOscuro;
-            s.ForeColor = Color.White;
+            s.BackColor = Fondo;
+            s.ForeColor = TextoSuave;
             foreach (ToolStripItem item in s.Items)
-                item.ForeColor = Color.White;
+                item.ForeColor = TextoSuave;
         }
 
         private sealed class Colores : ProfessionalColorTable
         {
             public Colores() { UseSystemColors = false; }
 
-            public override Color MenuStripGradientBegin => Color.White;
-            public override Color MenuStripGradientEnd => Color.White;
-            public override Color MenuItemSelected => TurquesaClaro;
-            public override Color MenuItemSelectedGradientBegin => TurquesaClaro;
-            public override Color MenuItemSelectedGradientEnd => TurquesaClaro;
-            public override Color MenuItemPressedGradientBegin => TurquesaClaro;
-            public override Color MenuItemPressedGradientMiddle => TurquesaClaro;
-            public override Color MenuItemPressedGradientEnd => TurquesaClaro;
-            public override Color MenuItemBorder => Turquesa;
+            public override Color MenuStripGradientBegin => Fondo;
+            public override Color MenuStripGradientEnd => Fondo;
+            public override Color MenuItemSelected => MentaClaro;
+            public override Color MenuItemSelectedGradientBegin => MentaClaro;
+            public override Color MenuItemSelectedGradientEnd => MentaClaro;
+            public override Color MenuItemPressedGradientBegin => MentaClaro;
+            public override Color MenuItemPressedGradientMiddle => MentaClaro;
+            public override Color MenuItemPressedGradientEnd => MentaClaro;
+            public override Color MenuItemBorder => Menta;
             public override Color MenuBorder => Borde;
             public override Color ToolStripDropDownBackground => Color.White;
             public override Color ImageMarginGradientBegin => Color.White;
@@ -144,8 +117,8 @@ namespace Salud_Provincial.Presentacion
             public override Color ImageMarginGradientEnd => Color.White;
             public override Color SeparatorDark => Borde;
             public override Color SeparatorLight => Color.White;
-            public override Color StatusStripGradientBegin => TurquesaOscuro;
-            public override Color StatusStripGradientEnd => TurquesaOscuro;
+            public override Color StatusStripGradientBegin => Fondo;
+            public override Color StatusStripGradientEnd => Fondo;
         }
     }
 }

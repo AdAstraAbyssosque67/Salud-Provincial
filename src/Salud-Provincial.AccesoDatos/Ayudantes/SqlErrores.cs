@@ -8,6 +8,7 @@ namespace Salud_Provincial.AccesoDatos.Ayudantes
     {
         public static AccesoDatosException Traducir(SqlException ex)
         {
+            System.Diagnostics.Debug.WriteLine($"SQL {ex.Number}: {ex.Message}");
             switch (ex.Number)
             {
                 case 2627:  // violación de PRIMARY KEY / UNIQUE constraint
@@ -26,11 +27,12 @@ namespace Salud_Provincial.AccesoDatos.Ayudantes
                 case 50004: // bitácora inmutable
                     return new AccesoDatosException(TipoErrorDatos.ReglaBaseDatos, ex.Message, ex);
 
-                case -1:    // no se pudo conectar
-                case 2:     // servidor no encontrado
-                case 53:    // ruta de red no encontrada
-                case 4060:  // no se puede abrir la base de datos
-                case 18456: // fallo de inicio de sesión
+                case -1:
+                case 2:
+                case 53:
+                case 4060:
+                case 18456:
+                case -2146893019: // fallo de certificado/SSL en la conexión
                     return new AccesoDatosException(TipoErrorDatos.Conexion,
                         "No se pudo conectar con la base de datos.", ex);
 

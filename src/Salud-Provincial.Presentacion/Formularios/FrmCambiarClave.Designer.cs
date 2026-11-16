@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Windows.Forms;
+using Salud_Provincial.Presentacion.Controles;
 
 namespace Salud_Provincial.Presentacion
 {
@@ -20,7 +21,6 @@ namespace Salud_Provincial.Presentacion
 
         private void InitializeComponent()
         {
-            panelEncabezado = new Panel();
             lblTitulo = new Label();
             lblClaveActual = new Label();
             txtClaveActual = new TextBox();
@@ -28,102 +28,100 @@ namespace Salud_Provincial.Presentacion
             txtClaveNueva = new TextBox();
             lblConfirmar = new Label();
             txtConfirmar = new TextBox();
-            btnAceptar = new Button();
-            btnCancelar = new Button();
-            panelEncabezado.SuspendLayout();
+            btnAceptar = new BotonPildora();
+            btnCancelar = new BotonPildora();
             SuspendLayout();
-            // 
-            // panelEncabezado
-            // 
-            panelEncabezado.BackColor = Color.FromArgb(31, 181, 197);
-            panelEncabezado.Controls.Add(lblTitulo);
-            panelEncabezado.Dock = DockStyle.Top;
-            panelEncabezado.Location = new Point(0, 0);
-            panelEncabezado.Name = "panelEncabezado";
-            panelEncabezado.Size = new Size(420, 56);
-            panelEncabezado.TabIndex = 8;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 14F);
-            lblTitulo.ForeColor = Color.White;
-            lblTitulo.Location = new Point(16, 12);
+            lblTitulo.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTitulo.ForeColor = Color.FromArgb(26, 32, 44);
+            lblTitulo.Location = new Point(26, 22);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(190, 32);
+            lblTitulo.Size = new Size(230, 37);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Cambiar contraseña";
             // 
             // lblClaveActual
             // 
             lblClaveActual.AutoSize = true;
-            lblClaveActual.Location = new Point(20, 84);
+            lblClaveActual.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblClaveActual.ForeColor = Color.FromArgb(113, 128, 150);
+            lblClaveActual.Location = new Point(27, 80);
             lblClaveActual.Name = "lblClaveActual";
-            lblClaveActual.Size = new Size(100, 20);
-            lblClaveActual.TabIndex = 0;
-            lblClaveActual.Text = "Clave actual:";
+            lblClaveActual.Size = new Size(87, 20);
+            lblClaveActual.TabIndex = 1;
+            lblClaveActual.Text = "Clave actual";
             // 
             // txtClaveActual
             // 
-            txtClaveActual.Location = new Point(175, 81);
+            txtClaveActual.BorderStyle = BorderStyle.FixedSingle;
+            txtClaveActual.Location = new Point(26, 104);
             txtClaveActual.Name = "txtClaveActual";
             txtClaveActual.PasswordChar = '*';
-            txtClaveActual.Size = new Size(225, 27);
-            txtClaveActual.TabIndex = 1;
+            txtClaveActual.Size = new Size(328, 27);
+            txtClaveActual.TabIndex = 0;
             // 
             // lblClaveNueva
             // 
             lblClaveNueva.AutoSize = true;
-            lblClaveNueva.Location = new Point(20, 124);
+            lblClaveNueva.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblClaveNueva.ForeColor = Color.FromArgb(113, 128, 150);
+            lblClaveNueva.Location = new Point(27, 146);
             lblClaveNueva.Name = "lblClaveNueva";
-            lblClaveNueva.Size = new Size(100, 20);
-            lblClaveNueva.TabIndex = 2;
-            lblClaveNueva.Text = "Clave nueva:";
+            lblClaveNueva.Size = new Size(87, 20);
+            lblClaveNueva.TabIndex = 3;
+            lblClaveNueva.Text = "Clave nueva";
             // 
             // txtClaveNueva
             // 
-            txtClaveNueva.Location = new Point(175, 121);
+            txtClaveNueva.BorderStyle = BorderStyle.FixedSingle;
+            txtClaveNueva.Location = new Point(26, 170);
             txtClaveNueva.Name = "txtClaveNueva";
             txtClaveNueva.PasswordChar = '*';
-            txtClaveNueva.Size = new Size(225, 27);
-            txtClaveNueva.TabIndex = 3;
+            txtClaveNueva.Size = new Size(328, 27);
+            txtClaveNueva.TabIndex = 1;
             // 
             // lblConfirmar
             // 
             lblConfirmar.AutoSize = true;
-            lblConfirmar.Location = new Point(20, 164);
+            lblConfirmar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblConfirmar.ForeColor = Color.FromArgb(113, 128, 150);
+            lblConfirmar.Location = new Point(27, 212);
             lblConfirmar.Name = "lblConfirmar";
-            lblConfirmar.Size = new Size(125, 20);
-            lblConfirmar.TabIndex = 4;
-            lblConfirmar.Text = "Confirmar clave:";
+            lblConfirmar.Size = new Size(110, 20);
+            lblConfirmar.TabIndex = 5;
+            lblConfirmar.Text = "Confirmar clave";
             // 
             // txtConfirmar
             // 
-            txtConfirmar.Location = new Point(175, 161);
+            txtConfirmar.BorderStyle = BorderStyle.FixedSingle;
+            txtConfirmar.Location = new Point(26, 236);
             txtConfirmar.Name = "txtConfirmar";
             txtConfirmar.PasswordChar = '*';
-            txtConfirmar.Size = new Size(225, 27);
-            txtConfirmar.TabIndex = 5;
+            txtConfirmar.Size = new Size(328, 27);
+            txtConfirmar.TabIndex = 2;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(175, 214);
+            btnAceptar.Location = new Point(26, 292);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(110, 36);
-            btnAceptar.TabIndex = 6;
+            btnAceptar.Size = new Size(160, 44);
+            btnAceptar.TabIndex = 3;
             btnAceptar.Text = "Aceptar";
-            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.UseVisualStyleBackColor = false;
             btnAceptar.Click += btnAceptar_Click;
             // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(290, 214);
+            btnCancelar.Location = new Point(194, 292);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(110, 36);
-            btnCancelar.TabIndex = 7;
+            btnCancelar.Size = new Size(160, 44);
+            btnCancelar.TabIndex = 4;
             btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.UseVisualStyleBackColor = false;
             // 
             // FrmCambiarClave
             // 
@@ -132,7 +130,7 @@ namespace Salud_Provincial.Presentacion
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             CancelButton = btnCancelar;
-            ClientSize = new Size(420, 274);
+            ClientSize = new Size(380, 362);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Controls.Add(txtConfirmar);
@@ -141,22 +139,19 @@ namespace Salud_Provincial.Presentacion
             Controls.Add(lblClaveNueva);
             Controls.Add(txtClaveActual);
             Controls.Add(lblClaveActual);
-            Controls.Add(panelEncabezado);
+            Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmCambiarClave";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Cambiar contraseña";
-            panelEncabezado.ResumeLayout(false);
-            panelEncabezado.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Panel panelEncabezado;
         private Label lblTitulo;
         private Label lblClaveActual;
         private TextBox txtClaveActual;
@@ -164,7 +159,7 @@ namespace Salud_Provincial.Presentacion
         private TextBox txtClaveNueva;
         private Label lblConfirmar;
         private TextBox txtConfirmar;
-        private Button btnAceptar;
-        private Button btnCancelar;
+        private BotonPildora btnAceptar;
+        private BotonPildora btnCancelar;
     }
 }

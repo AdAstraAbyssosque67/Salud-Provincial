@@ -9,6 +9,10 @@ namespace Salud_Provincial.Presentacion
 
         public static void Mostrar(Exception ex, IWin32Window? propietario = null)
         {
+#if DEBUG
+            // Solo en Debug: la excepción completa (con InnerException) va a la ventana Salida de Visual Studio.
+            System.Diagnostics.Debug.WriteLine("[Salud-Provincial] " + ex);
+#endif
             if (ex is NegocioException) // incluye PermisoDenegadoException
                 MessageBox.Show(propietario, ex.Message, Titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else

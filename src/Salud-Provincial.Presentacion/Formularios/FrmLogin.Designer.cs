@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Windows.Forms;
+using Salud_Provincial.Presentacion.Controles;
 
 namespace Salud_Provincial.Presentacion
 {
@@ -28,11 +29,12 @@ namespace Salud_Provincial.Presentacion
             lblClave = new Label();
             txtClave = new TextBox();
             chkMostrarClave = new CheckBox();
-            btnIngresar = new Button();
-            btnSalir = new Button();
-            panelMarca = new Panel();
-            lblMarca = new Label();
+            btnIngresar = new BotonPildora();
+            btnSalir = new BotonPildora();
+            panelMarca = new PanelDegradado();
+            logoMarca = new LogoMarca();
             lblLema = new Label();
+            lblSubLema = new Label();
             lblMinisterio = new Label();
             panelFormulario.SuspendLayout();
             panelMarca.SuspendLayout();
@@ -51,27 +53,27 @@ namespace Salud_Provincial.Presentacion
             panelFormulario.Controls.Add(btnIngresar);
             panelFormulario.Controls.Add(btnSalir);
             panelFormulario.Dock = DockStyle.Fill;
-            panelFormulario.Location = new Point(331, 0);
+            panelFormulario.Location = new Point(383, 0);
             panelFormulario.Name = "panelFormulario";
-            panelFormulario.Size = new Size(409, 420);
+            panelFormulario.Size = new Size(397, 440);
             panelFormulario.TabIndex = 0;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(44, 62, 80);
-            lblTitulo.Location = new Point(50, 45);
+            lblTitulo.Font = new Font("Segoe UI Semibold", 22F);
+            lblTitulo.ForeColor = Color.FromArgb(26, 32, 44);
+            lblTitulo.Location = new Point(27, 38);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(201, 41);
+            lblTitulo.Size = new Size(241, 50);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Iniciar sesión";
             // 
             // lblSubtitulo
             // 
             lblSubtitulo.AutoSize = true;
-            lblSubtitulo.ForeColor = Color.FromArgb(127, 140, 141);
-            lblSubtitulo.Location = new Point(52, 92);
+            lblSubtitulo.ForeColor = Color.FromArgb(113, 128, 150);
+            lblSubtitulo.Location = new Point(30, 90);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(167, 20);
             lblSubtitulo.TabIndex = 1;
@@ -80,17 +82,19 @@ namespace Salud_Provincial.Presentacion
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
-            lblUsuario.ForeColor = Color.FromArgb(44, 62, 80);
-            lblUsuario.Location = new Point(52, 140);
+            lblUsuario.Font = new Font("Segoe UI Semibold", 9F);
+            lblUsuario.ForeColor = Color.FromArgb(113, 128, 150);
+            lblUsuario.Location = new Point(30, 140);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(59, 20);
+            lblUsuario.Size = new Size(62, 20);
             lblUsuario.TabIndex = 2;
             lblUsuario.Text = "Usuario";
             // 
             // txtUsuario
             // 
+            txtUsuario.BorderStyle = BorderStyle.FixedSingle;
             txtUsuario.Font = new Font("Segoe UI", 11F);
-            txtUsuario.Location = new Point(50, 164);
+            txtUsuario.Location = new Point(29, 164);
             txtUsuario.MaxLength = 50;
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Nombre de usuario";
@@ -100,17 +104,19 @@ namespace Salud_Provincial.Presentacion
             // lblClave
             // 
             lblClave.AutoSize = true;
-            lblClave.ForeColor = Color.FromArgb(44, 62, 80);
-            lblClave.Location = new Point(52, 210);
+            lblClave.Font = new Font("Segoe UI Semibold", 9F);
+            lblClave.ForeColor = Color.FromArgb(113, 128, 150);
+            lblClave.Location = new Point(30, 212);
             lblClave.Name = "lblClave";
-            lblClave.Size = new Size(83, 20);
+            lblClave.Size = new Size(86, 20);
             lblClave.TabIndex = 4;
             lblClave.Text = "Contraseña";
             // 
             // txtClave
             // 
+            txtClave.BorderStyle = BorderStyle.FixedSingle;
             txtClave.Font = new Font("Segoe UI", 11F);
-            txtClave.Location = new Point(50, 234);
+            txtClave.Location = new Point(29, 236);
             txtClave.Name = "txtClave";
             txtClave.PasswordChar = '*';
             txtClave.PlaceholderText = "Contraseña";
@@ -120,8 +126,8 @@ namespace Salud_Provincial.Presentacion
             // chkMostrarClave
             // 
             chkMostrarClave.AutoSize = true;
-            chkMostrarClave.ForeColor = Color.FromArgb(127, 140, 141);
-            chkMostrarClave.Location = new Point(52, 274);
+            chkMostrarClave.ForeColor = Color.FromArgb(113, 128, 150);
+            chkMostrarClave.Location = new Point(30, 278);
             chkMostrarClave.Name = "chkMostrarClave";
             chkMostrarClave.Size = new Size(158, 24);
             chkMostrarClave.TabIndex = 2;
@@ -131,67 +137,81 @@ namespace Salud_Provincial.Presentacion
             // 
             // btnIngresar
             // 
-            btnIngresar.Location = new Point(50, 315);
+            btnIngresar.FlatStyle = FlatStyle.Flat;
+            btnIngresar.Font = new Font("Segoe UI Semibold", 10F);
+            btnIngresar.Location = new Point(29, 320);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(340, 42);
+            btnIngresar.Size = new Size(340, 46);
             btnIngresar.TabIndex = 3;
             btnIngresar.Text = "Ingresar";
-            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
             // 
             // btnSalir
             // 
             btnSalir.DialogResult = DialogResult.Cancel;
-            btnSalir.Location = new Point(50, 366);
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.Font = new Font("Segoe UI Semibold", 10F);
+            btnSalir.Location = new Point(29, 376);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(340, 36);
+            btnSalir.Size = new Size(340, 40);
             btnSalir.TabIndex = 4;
             btnSalir.Text = "Salir";
-            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.UseVisualStyleBackColor = false;
             // 
             // panelMarca
             // 
-            panelMarca.BackColor = Color.FromArgb(31, 181, 197);
-            panelMarca.Controls.Add(lblMarca);
+            panelMarca.Controls.Add(logoMarca);
             panelMarca.Controls.Add(lblLema);
+            panelMarca.Controls.Add(lblSubLema);
             panelMarca.Controls.Add(lblMinisterio);
             panelMarca.Dock = DockStyle.Left;
             panelMarca.Location = new Point(0, 0);
             panelMarca.Name = "panelMarca";
-            panelMarca.Size = new Size(331, 420);
+            panelMarca.Size = new Size(383, 440);
             panelMarca.TabIndex = 1;
             // 
-            // lblMarca
+            // logoMarca
             // 
-            lblMarca.AutoSize = true;
-            lblMarca.Font = new Font("Segoe UI", 22F, FontStyle.Bold);
-            lblMarca.ForeColor = Color.White;
-            lblMarca.Location = new Point(24, 120);
-            lblMarca.Name = "lblMarca";
-            lblMarca.Size = new Size(308, 50);
-            lblMarca.TabIndex = 0;
-            lblMarca.Text = "Salud-Provincial";
+            logoMarca.BackColor = Color.Transparent;
+            logoMarca.Location = new Point(28, 28);
+            logoMarca.Name = "logoMarca";
+            logoMarca.Size = new Size(262, 44);
+            logoMarca.TabIndex = 0;
             // 
             // lblLema
             // 
             lblLema.AutoSize = true;
-            lblLema.Font = new Font("Segoe UI", 11F);
-            lblLema.ForeColor = Color.White;
-            lblLema.Location = new Point(28, 185);
+            lblLema.BackColor = Color.Transparent;
+            lblLema.Font = new Font("Segoe UI Semibold", 21F);
+            lblLema.ForeColor = Color.FromArgb(26, 32, 44);
+            lblLema.Location = new Point(28, 116);
             lblLema.Name = "lblLema";
-            lblLema.Size = new Size(298, 75);
+            lblLema.Size = new Size(354, 94);
             lblLema.TabIndex = 1;
-            lblLema.Text = "Información de salud centralizada\r\nde hospitales y centros de\r\natención de todo el país.";
+            lblLema.Text = "Información de salud\r\ncentralizada";
+            // 
+            // lblSubLema
+            // 
+            lblSubLema.BackColor = Color.Transparent;
+            lblSubLema.Font = new Font("Segoe UI", 11F);
+            lblSubLema.ForeColor = Color.FromArgb(45, 55, 72);
+            lblSubLema.Location = new Point(30, 240);
+            lblSubLema.Name = "lblSubLema";
+            lblSubLema.Size = new Size(260, 80);
+            lblSubLema.TabIndex = 2;
+            lblSubLema.Text = "Hospitales y centros de atención de todo el país, en una sola plataforma.";
             // 
             // lblMinisterio
             // 
             lblMinisterio.AutoSize = true;
+            lblMinisterio.BackColor = Color.Transparent;
             lblMinisterio.Font = new Font("Segoe UI", 9F);
-            lblMinisterio.ForeColor = Color.White;
-            lblMinisterio.Location = new Point(28, 380);
+            lblMinisterio.ForeColor = Color.FromArgb(45, 55, 72);
+            lblMinisterio.Location = new Point(30, 396);
             lblMinisterio.Name = "lblMinisterio";
             lblMinisterio.Size = new Size(137, 20);
-            lblMinisterio.TabIndex = 2;
+            lblMinisterio.TabIndex = 3;
             lblMinisterio.Text = "Ministerio de Salud";
             // 
             // FrmLogin
@@ -200,7 +220,7 @@ namespace Salud_Provincial.Presentacion
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnSalir;
-            ClientSize = new Size(740, 420);
+            ClientSize = new Size(780, 440);
             Controls.Add(panelFormulario);
             Controls.Add(panelMarca);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -226,11 +246,12 @@ namespace Salud_Provincial.Presentacion
         private Label lblClave;
         private TextBox txtClave;
         private CheckBox chkMostrarClave;
-        private Button btnIngresar;
-        private Button btnSalir;
-        private Panel panelMarca;
-        private Label lblMarca;
+        private BotonPildora btnIngresar;
+        private BotonPildora btnSalir;
+        private PanelDegradado panelMarca;
+        private LogoMarca logoMarca;
         private Label lblLema;
+        private Label lblSubLema;
         private Label lblMinisterio;
     }
 }

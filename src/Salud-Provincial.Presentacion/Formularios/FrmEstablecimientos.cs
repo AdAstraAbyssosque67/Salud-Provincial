@@ -23,7 +23,7 @@ namespace Salud_Provincial.Presentacion
             Tema.Tabla(dgvEstablecimientos);
             Tema.BotonPrimario(btnGuardar);
             Tema.BotonSecundario(btnNuevo);
-            Tema.BotonEncabezado(btnRefrescar);
+            Tema.BotonSecundario(btnRefrescar);
         }
 
         // Cada vez que se abre, se vuelve a consultar todo.
@@ -149,7 +149,7 @@ namespace Salud_Provincial.Presentacion
         {
             bool activo = _actual?.Activo ?? true;
             btnEstado.Text = activo ? "Desactivar" : "Reactivar";
-            if (activo) Tema.BotonPeligro(btnEstado); else Tema.BotonTurquesa(btnEstado);
+            if (activo) Tema.BotonPeligro(btnEstado); else Tema.BotonAfirmativo(btnEstado);
             btnEstado.Enabled = _actual != null;
         }
 
@@ -176,9 +176,9 @@ namespace Salud_Provincial.Presentacion
 
             if (!est.Activo)
             {
-                e.CellStyle.BackColor = Tema.FilaInactiva;   // equivalente al "no disponible" de la referencia
+                e.CellStyle.BackColor = Tema.FilaInactiva;
                 if (e.ColumnIndex != colEstado.Index)
-                    e.CellStyle.ForeColor = Color.Gray;
+                    e.CellStyle.ForeColor = Color.FromArgb(160, 174, 192);
             }
         }
 
