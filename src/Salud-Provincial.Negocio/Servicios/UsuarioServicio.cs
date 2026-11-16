@@ -12,7 +12,7 @@ using Salud_Provincial.Negocio.Validaciones;
 
 namespace Salud_Provincial.Negocio.Servicios
 {
-    /// <summary>Gestión de usuarios: solo el administrador nacional.</summary>
+    // Gestión de usuarios: solo el administrador nacional.
     public class UsuarioServicio : ServicioBase, IUsuarioServicio
     {
         private const string MensajeDuplicado = "Ya existe un usuario con ese nombre de usuario.";
@@ -133,10 +133,10 @@ namespace Salud_Provincial.Negocio.Servicios
             => _usuarios.ObtenerPorId(usuarioId, AlcanceProvincia.Todas())
                ?? throw new NegocioException("El usuario no existe.");
 
-        /// <summary>
-        /// Aplica la regla rol/provincia: el administrador nacional no pertenece a ninguna provincia;
-        /// un usuario provincial debe pertenecer a una provincia existente y activa.
-        /// </summary>
+        // 
+        // Aplica la regla rol/provincia: el administrador nacional no pertenece a ninguna provincia;
+        // un usuario provincial debe pertenecer a una provincia existente y activa.
+        // 
         private int? ResolverProvincia(RolUsuario rol, int? provinciaId)
         {
             if (rol == RolUsuario.AdminNacional)

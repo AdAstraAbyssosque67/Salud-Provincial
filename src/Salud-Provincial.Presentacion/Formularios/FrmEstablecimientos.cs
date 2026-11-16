@@ -5,6 +5,8 @@ using Salud_Provincial.Negocio.Seguridad;
 
 namespace Salud_Provincial.Presentacion
 {
+    public enum FiltroEstado { Todos, Activos, Inactivos }
+
     public partial class FrmEstablecimientos : Form
     {
         private readonly IEstablecimientoServicio _servicio = FabricaServicios.Establecimientos();
@@ -16,9 +18,18 @@ namespace Salud_Provincial.Presentacion
 
         private static bool EsAdmin => SesionUsuario.Instancia.EsAdminNacional;
 
-        public FrmEstablecimientos()
+        private readonly FiltroEstado _filtro;
+
+        public FrmEstablecimientos(FiltroEstado filtro = FiltroEstado.Todos)
         {
+            _filtro = filtro;
             InitializeComponent();
+            lblTitulo.Text = filtro switch
+            {
+                FiltroEstado.Activos => "Establecimientos activos",
+                FiltroEstado.Inactivos => "Establecimientos inactivos",
+                _ => "Establecimientos"
+            };
             Tema.Formulario(this);
             Tema.Tabla(dgvEstablecimientos);
             Tema.BotonPrimario(btnGuardar);
@@ -63,7 +74,9 @@ namespace Salud_Provincial.Presentacion
             _cargando = true;
             try
             {
-                lista = _servicio.Listar(chkMostrarInactivos.Checked);
+                lista = _servicio.Listar(_filtro != FiltroEstado.Activos);
+                if (_filtro == FiltroEstado.Inactivos) lista = lista.Where(x => !x.Activo).ToList();
+                lista = lista.OrderBy(x => x.NombreTipo).ThenBy(x => x.Nombre).ToList();
                 dgvEstablecimientos.DataSource = lista;
                 dgvEstablecimientos.ClearSelection();
             }
@@ -144,7 +157,7 @@ namespace Salud_Provincial.Presentacion
             errorProvider.Clear();
         }
 
-        /// <summary>Desactivar (rojo) o Reactivar (turquesa) según el registro seleccionado.</summary>
+        // Desactivar (rojo) o Reactivar (turquesa) según el registro seleccionado.
         private void ActualizarBotonEstado()
         {
             bool activo = _actual?.Activo ?? true;
@@ -271,7 +284,7 @@ namespace Salud_Provincial.Presentacion
                 {
                     var respuesta = MessageBox.Show(this,
                         $"¿Desea desactivar el establecimiento \"{_actual.Nombre}\"?\r\n\r\n" +
-                        "Podrá reactivarlo después desde \"Mostrar inactivos\".",
+                        "Podrá reactivarlo después desde la lista de inactivos.",
                         "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (respuesta != DialogResult.Yes)
                         return;
@@ -291,11 +304,6 @@ namespace Salud_Provincial.Presentacion
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
-        {
-            Recargar();
-        }
-
-        private void chkMostrarInactivos_CheckedChanged(object sender, EventArgs e)
         {
             Recargar();
         }

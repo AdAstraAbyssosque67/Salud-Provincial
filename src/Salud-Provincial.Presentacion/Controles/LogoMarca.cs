@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Salud_Provincial.Presentacion.Controles
 {
-    /// <summary>Logotipo: cruz médica en un cuadrado redondeado + nombre de la aplicación.</summary>
+    // Logotipo: cruz médica en un cuadrado redondeado + nombre de la aplicación.
     public class LogoMarca : Control
     {
         public LogoMarca()

@@ -5,7 +5,7 @@ namespace Salud_Provincial.Negocio.Interfaces
 {
     public interface ITipoEstablecimientoServicio
     {
-        /// <summary>Cualquier usuario en sesión. Los inactivos solo los ve el administrador nacional.</summary>
+        // Cualquier usuario en sesión. Los inactivos solo los ve el administrador nacional.
         List<TipoEstablecimiento> Listar(bool incluirInactivos = false);
 
         // Solo administrador nacional (es un catálogo nacional):

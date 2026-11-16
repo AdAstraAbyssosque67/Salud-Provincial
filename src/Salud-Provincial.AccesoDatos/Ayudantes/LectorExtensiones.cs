@@ -4,7 +4,7 @@ using Salud_Provincial.Entidades.Base;
 
 namespace Salud_Provincial.AccesoDatos.Ayudantes
 {
-    /// <summary>Métodos cortos para leer columnas por nombre, con manejo de NULL.</summary>
+    // Métodos cortos para leer columnas por nombre, con manejo de NULL.
     internal static class LectorExtensiones
     {
         public static string Texto(this SqlDataReader r, string columna)
@@ -43,7 +43,7 @@ namespace Salud_Provincial.AccesoDatos.Ayudantes
         public static byte[] Bytes(this SqlDataReader r, string columna)
             => r.GetFieldValue<byte[]>(r.GetOrdinal(columna));
 
-        /// <summary>Llena Activo y los 4 campos de auditoría comunes a las entidades de negocio.</summary>
+        // Llena Activo y los 4 campos de auditoría comunes a las entidades de negocio.
         public static void LeerAuditoria(this SqlDataReader r, EntidadAuditable entidad)
         {
             entidad.Activo = r.Booleano("Activo");

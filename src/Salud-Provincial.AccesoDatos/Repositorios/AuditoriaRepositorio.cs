@@ -9,10 +9,10 @@ using Salud_Provincial.Entidades.Modelos;
 
 namespace Salud_Provincial.AccesoDatos.Repositorios
 {
-    /// <summary>
-    /// Solo lectura de la bitácora de cambios (la llenan los triggers) y escritura de la
-    /// bitácora de accesos. Nunca modifica ni borra: las tablas son de solo inserción.
-    /// </summary>
+    // 
+    // Solo lectura de la bitácora de cambios (la llenan los triggers) y escritura de la
+    // bitácora de accesos. Nunca modifica ni borra: las tablas son de solo inserción.
+    // 
     public class AuditoriaRepositorio : RepositorioBase, IAuditoriaRepositorio
     {
         public List<AuditoriaRegistro> Listar(AlcanceProvincia alcance, DateTime? desde, DateTime? hastaExclusivo,

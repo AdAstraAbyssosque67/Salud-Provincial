@@ -2,12 +2,12 @@ using System;
 
 namespace Salud_Provincial.Entidades.Base
 {
-    /// <summary>
-    /// Define qué provincias puede ver o modificar quien hace la operación.
-    /// La capa de Negocio la construye a partir de la sesión y la pasa a los repositorios.
-    /// No tiene constructor público: hay que pedir explícitamente "Todas" o una provincia concreta,
-    /// así un null olvidado nunca se convierte en "ver todo".
-    /// </summary>
+    // 
+    // Define qué provincias puede ver o modificar quien hace la operación.
+    // La capa de Negocio la construye a partir de la sesión y la pasa a los repositorios.
+    // No tiene constructor público: hay que pedir explícitamente "Todas" o una provincia concreta,
+    // así un null olvidado nunca se convierte en "ver todo".
+    // 
     public sealed class AlcanceProvincia
     {
         public bool VerTodas { get; }
@@ -19,10 +19,10 @@ namespace Salud_Provincial.Entidades.Base
             ProvinciaId = provinciaId;
         }
 
-        /// <summary>Solo para el administrador nacional.</summary>
+        // Solo para el administrador nacional.
         public static AlcanceProvincia Todas() => new AlcanceProvincia(true, null);
 
-        /// <summary>Para usuarios provinciales: solo su provincia.</summary>
+        // Para usuarios provinciales: solo su provincia.
         public static AlcanceProvincia De(int provinciaId)
         {
             if (provinciaId <= 0)
@@ -30,7 +30,7 @@ namespace Salud_Provincial.Entidades.Base
             return new AlcanceProvincia(false, provinciaId);
         }
 
-        /// <summary>Indica si este alcance incluye a la provincia indicada.</summary>
+        // Indica si este alcance incluye a la provincia indicada.
         public bool Permite(int provinciaId) => VerTodas || ProvinciaId == provinciaId;
     }
 }

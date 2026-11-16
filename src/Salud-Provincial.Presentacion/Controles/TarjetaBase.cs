@@ -5,8 +5,8 @@ using System.Windows.Forms;
 
 namespace Salud_Provincial.Presentacion.Controles
 {
-    /// <summary>Tarjeta Bento: fondo blanco (o degradado), esquinas de 20 px y sombra muy suave.
-    /// Puede contener otros controles.</summary>
+    // Tarjeta Bento: fondo blanco (o degradado), esquinas de 20 px y sombra muy suave.
+    // Puede contener otros controles.
     public class TarjetaBase : Panel
     {
         private bool _gradiente;
@@ -29,7 +29,7 @@ namespace Salud_Provincial.Presentacion.Controles
             set { _gradiente = value; Invalidate(); }
         }
 
-        /// <summary>Rectángulo de la tarjeta (deja margen para la sombra).</summary>
+        // Rectángulo de la tarjeta (deja margen para la sombra).
         protected RectangleF AreaTarjeta => new RectangleF(4, 2, Math.Max(0, Width - 9), Math.Max(0, Height - 9));
 
         protected override void OnPaintBackground(PaintEventArgs e)

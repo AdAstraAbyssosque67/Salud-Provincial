@@ -11,7 +11,7 @@ namespace Salud_Provincial.Presentacion
         private readonly IAutenticacionServicio _autenticacion = FabricaServicios.Autenticacion();
         private readonly IEstablecimientoServicio _establecimientos = FabricaServicios.Establecimientos();
 
-        /// <summary>True si el usuario eligió "Cerrar sesión" (Program vuelve al login).</summary>
+        // True si el usuario eligió "Cerrar sesión" (Program vuelve al login).
         public bool CerrarSesionSolicitada { get; private set; }
 
         public FrmPrincipal()
@@ -37,10 +37,14 @@ namespace Salud_Provincial.Presentacion
             tarjetaBienvenida.Texto = $"Rol: {rol}\r\nÁmbito: {ambito}\r\nSesión: {sesion.InicioSesion:dd/MM/yyyy HH:mm}";
             tarjetaBienvenida.TextoBoton = "Gestionar establecimientos";
 
+            itemProvincias.Visible = sesion.EsAdminNacional;
+            OrdenarSidebar();
+            tarjetaSidebar.Resize += (_, _) => PosicionarCerrarSesion();
+            MarcarActivo(itemInicio);
             CargarDashboard();
         }
 
-        /// <summary>Calcula los indicadores con los datos que Negocio permite ver a este usuario.</summary>
+        // Calcula los indicadores con los datos que Negocio permite ver a este usuario.
         private void CargarDashboard()
         {
             try
@@ -103,17 +107,76 @@ namespace Salud_Provincial.Presentacion
             try { _autenticacion.CerrarSesion(); } catch { }
         }
 
-        private void itemInicio_Click(object sender, EventArgs e)
+        private Form? _hijo;
+
+        private void Mostrar(Form frm, ItemNavegacion? activo)
         {
-            CargarDashboard();
+            CerrarHijo();
+            _hijo = frm;
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.MinimumSize = Size.Empty;
+            frm.Dock = DockStyle.Fill;
+            tlpDashboard.Visible = false;
+            panelContenido.Controls.Add(frm);
+            frm.Show();
+            MarcarActivo(activo);
         }
 
-        private void mnuEstablecimientos_Click(object sender, EventArgs e)
+        private void CerrarHijo()
         {
-            using (var frm = new FrmEstablecimientos())
-                frm.ShowDialog(this);
-            CargarDashboard();   // los datos pudieron cambiar
+            if (_hijo == null) return;
+            panelContenido.Controls.Remove(_hijo);
+            _hijo.Dispose();
+            _hijo = null;
         }
+
+        private void MostrarInicio()
+        {
+            CerrarHijo();
+            tlpDashboard.Visible = true;
+            CargarDashboard();
+            MarcarActivo(itemInicio);
+        }
+
+        private void MarcarActivo(ItemNavegacion? activo)
+        {
+            foreach (var it in new[] { itemInicio, itemEstablecimientos, itemProvincias, itemClave })
+                it.Activo = it == activo;
+        }
+
+        private void OrdenarSidebar()
+        {
+            int y = 24;
+            logoMarca.Location = new Point(14, y);
+            y += logoMarca.Height + 24;
+            foreach (var it in new[] { itemInicio, itemEstablecimientos, itemProvincias, itemClave })
+            {
+                if (!it.Visible) continue;
+                it.Location = new Point(14, y);
+                y += it.Height + 6;
+            }
+
+            itemCerrarSesion.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            itemCerrarSesion.Width = itemInicio.Width;
+            itemCerrarSesion.BringToFront();
+            PosicionarCerrarSesion();
+        }
+
+        private void PosicionarCerrarSesion()
+        {
+            itemCerrarSesion.Location = new Point(14, tarjetaSidebar.ClientSize.Height - itemCerrarSesion.Height - 24);
+        }
+
+        private void AbrirEstablecimientos(FiltroEstado filtro)
+            => Mostrar(new FrmEstablecimientos(filtro), itemEstablecimientos);
+
+        private void itemInicio_Click(object sender, EventArgs e) => MostrarInicio();
+        private void mnuEstablecimientos_Click(object sender, EventArgs e) => AbrirEstablecimientos(FiltroEstado.Todos);
+        private void kpiActivos_FlechaClick(object sender, EventArgs e) => AbrirEstablecimientos(FiltroEstado.Activos);
+        private void kpiInactivos_FlechaClick(object sender, EventArgs e) => AbrirEstablecimientos(FiltroEstado.Inactivos);
+        private void kpiTipos_FlechaClick(object sender, EventArgs e) => AbrirEstablecimientos(FiltroEstado.Activos);
+        private void itemProvincias_Click(object sender, EventArgs e) => Mostrar(new FrmProvinciasUsuarios(), itemProvincias);
 
         private void mnuCambiarClave_Click(object sender, EventArgs e)
         {

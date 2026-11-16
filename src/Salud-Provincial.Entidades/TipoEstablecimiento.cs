@@ -2,7 +2,7 @@ using Salud_Provincial.Entidades.Base;
 
 namespace Salud_Provincial.Entidades.Modelos
 {
-    /// <summary>Catálogo nacional de tipos de establecimiento (compartido por todas las provincias).</summary>
+    // Catálogo nacional de tipos de establecimiento (compartido por todas las provincias).
     public class TipoEstablecimiento : EntidadAuditable
     {
         public int TipoEstablecimientoId { get; set; }

@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 
 namespace Salud_Provincial.Presentacion.Controles
 {
-    /// <summary>Medidor semicircular (0-100 %) con degradado azul → menta.</summary>
+    // Medidor semicircular (0-100 %) con degradado azul → menta.
     public class TarjetaMedidor : TarjetaBase
     {
         private string _titulo = "", _detalle = "";

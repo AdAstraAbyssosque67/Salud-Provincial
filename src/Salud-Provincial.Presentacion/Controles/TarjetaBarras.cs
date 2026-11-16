@@ -12,7 +12,7 @@ namespace Salud_Provincial.Presentacion.Controles
         public double Secundario { get; set; }    // parte superior (azul)
     }
 
-    /// <summary>Gráfico de columnas apiladas con esquinas superiores redondeadas.</summary>
+    // Gráfico de columnas apiladas con esquinas superiores redondeadas.
     public class TarjetaBarras : TarjetaBase
     {
         private string _titulo = "";

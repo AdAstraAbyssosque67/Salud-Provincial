@@ -3,7 +3,7 @@ using Salud_Provincial.AccesoDatos.Excepciones;
 
 namespace Salud_Provincial.AccesoDatos.Ayudantes
 {
-    /// <summary>Traduce los errores de SQL Server a AccesoDatosException.</summary>
+    // Traduce los errores de SQL Server a AccesoDatosException.
     internal static class SqlErrores
     {
         public static AccesoDatosException Traducir(SqlException ex)

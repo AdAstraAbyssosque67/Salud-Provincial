@@ -4,18 +4,18 @@ using Salud_Provincial.Negocio.Excepciones;
 
 namespace Salud_Provincial.Negocio.Validaciones
 {
-    /// <summary>
-    /// Validaciones de entrada. Se hacen aquí (Negocio) y no solo en los formularios,
-    /// porque cualquier pantalla futura pasaría por los mismos servicios.
-    /// Todos los métodos devuelven el valor ya limpio (sin espacios sobrantes) o lanzan NegocioException.
-    /// </summary>
+    // 
+    // Validaciones de entrada. Se hacen aquí (Negocio) y no solo en los formularios,
+    // porque cualquier pantalla futura pasaría por los mismos servicios.
+    // Todos los métodos devuelven el valor ya limpio (sin espacios sobrantes) o lanzan NegocioException.
+    // 
     public static class Validador
     {
         private static readonly Regex RxCodigo = new Regex(@"^[A-Z0-9]{2,10}$");
         private static readonly Regex RxUsuario = new Regex(@"^[A-Za-z0-9._-]{3,50}$");
         private static readonly Regex RxTelefono = new Regex(@"^[0-9+()\-\s]{7,20}$");
 
-        /// <param name="campo">Nombre con artículo para el mensaje, por ejemplo "El nombre" o "La dirección".</param>
+        // <param name="campo">Nombre con artículo para el mensaje, por ejemplo "El nombre" o "La dirección".</param>
         public static string TextoRequerido(string? valor, string campo, int maximo)
         {
             string texto = (valor ?? string.Empty).Trim();
@@ -28,7 +28,7 @@ namespace Salud_Provincial.Negocio.Validaciones
             return texto;
         }
 
-        /// <returns>El texto limpio, o null si viene vacío.</returns>
+        // <returns>El texto limpio, o null si viene vacío.</returns>
         public static string? TextoOpcional(string? valor, string campo, int maximo)
         {
             string texto = (valor ?? string.Empty).Trim();
@@ -41,7 +41,7 @@ namespace Salud_Provincial.Negocio.Validaciones
             return texto;
         }
 
-        /// <summary>Código de provincia: 2 a 10 letras o números, siempre en mayúsculas.</summary>
+        // Código de provincia: 2 a 10 letras o números, siempre en mayúsculas.
         public static string Codigo(string? valor)
         {
             string codigo = TextoRequerido(valor, "El código", 10).ToUpperInvariant();
@@ -63,7 +63,7 @@ namespace Salud_Provincial.Negocio.Validaciones
             return usuario;
         }
 
-        /// <returns>El teléfono limpio, o null si viene vacío.</returns>
+        // <returns>El teléfono limpio, o null si viene vacío.</returns>
         public static string? Telefono(string? valor)
         {
             string? telefono = TextoOpcional(valor, "El teléfono", 20);
@@ -75,7 +75,7 @@ namespace Salud_Provincial.Negocio.Validaciones
             return telefono;
         }
 
-        /// <summary>Política mínima de contraseña: 8 caracteres, con letras y números.</summary>
+        // Política mínima de contraseña: 8 caracteres, con letras y números.
         public static void Clave(string? clave)
         {
             if (string.IsNullOrEmpty(clave) || clave.Length < 8 ||

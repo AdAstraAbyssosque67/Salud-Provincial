@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Salud_Provincial.Presentacion.Controles
 {
-    /// <summary>Opción de la barra lateral: icono lineal + texto, con estado activo y hover.</summary>
+    // Opción de la barra lateral: icono lineal + texto, con estado activo y hover.
     public class ItemNavegacion : Control
     {
         private bool _hover, _activo;

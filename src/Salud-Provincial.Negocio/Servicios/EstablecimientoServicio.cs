@@ -9,10 +9,10 @@ using Salud_Provincial.Negocio.Validaciones;
 
 namespace Salud_Provincial.Negocio.Servicios
 {
-    /// <summary>
-    /// Aquí se decide el aislamiento por provincia: el alcance sale SIEMPRE de la sesión
-    /// (Alcance()), nunca de un valor que envíe el formulario.
-    /// </summary>
+    // 
+    // Aquí se decide el aislamiento por provincia: el alcance sale SIEMPRE de la sesión
+    // (Alcance()), nunca de un valor que envíe el formulario.
+    // 
     public class EstablecimientoServicio : ServicioBase, IEstablecimientoServicio
     {
         private const string MensajeDuplicado = "Ya existe un establecimiento con ese nombre en la provincia.";
@@ -132,7 +132,7 @@ namespace Salud_Provincial.Negocio.Servicios
                 throw new NegocioException("El tipo de establecimiento no existe o está desactivado.");
         }
 
-        /// <summary>Valida y limpia los datos recibidos; devuelve un objeto nuevo.</summary>
+        // Valida y limpia los datos recibidos; devuelve un objeto nuevo.
         private static Establecimiento Normalizar(Establecimiento datos)
         {
             if (datos.TipoEstablecimientoId <= 0)

@@ -8,13 +8,13 @@ namespace Salud_Provincial.AccesoDatos.Interfaces
         List<Provincia> Listar(bool incluirInactivas);
         Provincia? ObtenerPorId(int provinciaId);
 
-        /// <summary>Inserta y devuelve el nuevo ProvinciaId.</summary>
+        // Inserta y devuelve el nuevo ProvinciaId.
         int Insertar(Provincia provincia, int usuarioId);
 
-        /// <returns>true si se modificó un registro.</returns>
+        // <returns>true si se modificó un registro.</returns>
         bool Actualizar(Provincia provincia, int usuarioId);
 
-        /// <summary>Borrado lógico. Devuelve false si el registro no existe o ya tenía ese estado.</summary>
+        // Borrado lógico. Devuelve false si el registro no existe o ya tenía ese estado.
         bool CambiarEstado(int provinciaId, bool activo, int usuarioId);
     }
 }

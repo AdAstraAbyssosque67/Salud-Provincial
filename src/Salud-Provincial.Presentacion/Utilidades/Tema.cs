@@ -4,7 +4,7 @@ using Salud_Provincial.Presentacion.Controles;
 
 namespace Salud_Provincial.Presentacion
 {
-    /// <summary>Paleta y estilos del sistema de diseño (estilo Bento: tarjetas, menta + azul cielo).</summary>
+    // Paleta y estilos del sistema de diseño (estilo Bento: tarjetas, menta + azul cielo).
     internal static class Tema
     {
         public static readonly Color Menta = Color.FromArgb(79, 209, 197);          // #4FD1C5
@@ -24,7 +24,7 @@ namespace Salud_Provincial.Presentacion
 
         private static readonly Dictionary<(float, bool), Font> _fuentes = new();
 
-        /// <summary>Fuente en caché. negrita = Segoe UI Semibold.</summary>
+        // Fuente en caché. negrita = Segoe UI Semibold.
         public static Font Fuente(float puntos, bool negrita = false)
         {
             var clave = (puntos, negrita);

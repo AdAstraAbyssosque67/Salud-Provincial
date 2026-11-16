@@ -4,7 +4,7 @@ using System.Drawing.Text;
 
 namespace Salud_Provincial.Presentacion
 {
-    /// <summary>Utilidades de dibujo GDI+ compartidas por los controles personalizados.</summary>
+    // Utilidades de dibujo GDI+ compartidas por los controles personalizados.
     internal static class Dibujo
     {
         public static void Preparar(Graphics g)
@@ -27,7 +27,7 @@ namespace Salud_Provincial.Presentacion
             return p;
         }
 
-        /// <summary>Solo las esquinas superiores redondeadas (barras del gráfico).</summary>
+        // Solo las esquinas superiores redondeadas (barras del gráfico).
         public static GraphicsPath RedondoSuperior(RectangleF r, float radio)
         {
             var p = new GraphicsPath();

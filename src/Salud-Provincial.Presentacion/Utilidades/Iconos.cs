@@ -5,7 +5,7 @@ namespace Salud_Provincial.Presentacion
 {
     public enum TipoIcono { Inicio, Edificio, Candado, Salir, FlechaDiagonal }
 
-    /// <summary>Iconos lineales finos dibujados con GDI+ (sin dependencias externas).</summary>
+    // Iconos lineales finos dibujados con GDI+ (sin dependencias externas).
     public static class Iconos
     {
         public static void Dibujar(Graphics g, TipoIcono tipo, RectangleF r, Color color, float grosor = 1.7F)

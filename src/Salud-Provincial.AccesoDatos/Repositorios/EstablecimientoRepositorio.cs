@@ -8,10 +8,10 @@ using Salud_Provincial.Entidades.Modelos;
 
 namespace Salud_Provincial.AccesoDatos.Repositorios
 {
-    /// <summary>
-    /// Aquí vive el aislamiento por provincia (Patrón Pool): TODA consulta incluye el filtro
-    /// (@Todas = 1 OR ProvinciaId = @ProvinciaId) según el AlcanceProvincia recibido.
-    /// </summary>
+    // 
+    // Aquí vive el aislamiento por provincia (Patrón Pool): TODA consulta incluye el filtro
+    // (@Todas = 1 OR ProvinciaId = @ProvinciaId) según el AlcanceProvincia recibido.
+    // 
     public class EstablecimientoRepositorio : RepositorioBase, IEstablecimientoRepositorio
     {
         private const string Seleccion = @"

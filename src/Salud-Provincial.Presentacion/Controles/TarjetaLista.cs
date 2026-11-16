@@ -14,7 +14,7 @@ namespace Salud_Provincial.Presentacion.Controles
         public bool Atenuado { get; set; }
     }
 
-    /// <summary>Lista vertical con avatar de iniciales, dos líneas de texto y estado a la derecha.</summary>
+    // Lista vertical con avatar de iniciales, dos líneas de texto y estado a la derecha.
     public class TarjetaLista : TarjetaBase
     {
         private string _titulo = "";

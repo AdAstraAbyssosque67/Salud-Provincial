@@ -2,7 +2,7 @@ using Salud_Provincial.Negocio.Excepciones;
 
 namespace Salud_Provincial.Presentacion
 {
-    /// <summary>Muestra errores al usuario sin exponer detalles técnicos.</summary>
+    // Muestra errores al usuario sin exponer detalles técnicos.
     internal static class ManejadorErrores
     {
         private const string Titulo = "Salud-Provincial";

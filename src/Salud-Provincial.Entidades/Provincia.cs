@@ -2,7 +2,7 @@ using Salud_Provincial.Entidades.Base;
 
 namespace Salud_Provincial.Entidades.Modelos
 {
-    /// <summary>Provincia: es el "tenant" de la arquitectura multi-tenant (Patrón Pool).</summary>
+    // Provincia: es el "tenant" de la arquitectura multi-tenant (Patrón Pool).
     public class Provincia : EntidadAuditable
     {
         public int ProvinciaId { get; set; }

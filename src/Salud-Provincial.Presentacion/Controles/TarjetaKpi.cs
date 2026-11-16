@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Salud_Provincial.Presentacion.Controles
 {
-    /// <summary>Tarjeta de indicador: título, cifra grande, detalle y botón circular con flecha.</summary>
+    // Tarjeta de indicador: título, cifra grande, detalle y botón circular con flecha.
     public class TarjetaKpi : TarjetaBase
     {
         private string _titulo = "", _valor = "", _detalle = "";

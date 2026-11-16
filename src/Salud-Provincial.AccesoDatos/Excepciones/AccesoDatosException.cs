@@ -5,20 +5,20 @@ namespace Salud_Provincial.AccesoDatos.Excepciones
     public enum TipoErrorDatos
     {
         Desconocido,
-        /// <summary>No se pudo llegar a la base de datos.</summary>
+        // No se pudo llegar a la base de datos.
         Conexion,
-        /// <summary>Viola una restricción UNIQUE (dato repetido).</summary>
+        // Viola una restricción UNIQUE (dato repetido).
         Duplicado,
-        /// <summary>Viola una llave foránea o un CHECK.</summary>
+        // Viola una llave foránea o un CHECK.
         Restriccion,
-        /// <summary>Una regla de auditoría o protección de la base de datos rechazó la operación.</summary>
+        // Una regla de auditoría o protección de la base de datos rechazó la operación.
         ReglaBaseDatos
     }
 
-    /// <summary>
-    /// Error de acceso a datos ya traducido a algo que la capa de Negocio puede entender,
-    /// sin exponer detalles técnicos de SQL Server.
-    /// </summary>
+    // 
+    // Error de acceso a datos ya traducido a algo que la capa de Negocio puede entender,
+    // sin exponer detalles técnicos de SQL Server.
+    // 
     public class AccesoDatosException : Exception
     {
         public TipoErrorDatos Tipo { get; }

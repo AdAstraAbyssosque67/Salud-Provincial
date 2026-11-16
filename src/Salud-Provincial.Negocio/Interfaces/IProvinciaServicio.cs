@@ -5,14 +5,14 @@ namespace Salud_Provincial.Negocio.Interfaces
 {
     public interface IProvinciaServicio
     {
-        /// <summary>Administrador nacional: todas. Usuario provincial: solo la suya (y solo si está activa).</summary>
+        // Administrador nacional: todas. Usuario provincial: solo la suya (y solo si está activa).
         List<Provincia> Listar(bool incluirInactivas = false);
 
         // Solo administrador nacional:
         Provincia Crear(string codigo, string nombre);
         void Actualizar(int provinciaId, string codigo, string nombre);
 
-        /// <summary>Al desactivar una provincia, sus usuarios ya no pueden iniciar sesión.</summary>
+        // Al desactivar una provincia, sus usuarios ya no pueden iniciar sesión.
         void Desactivar(int provinciaId);
         void Reactivar(int provinciaId);
     }

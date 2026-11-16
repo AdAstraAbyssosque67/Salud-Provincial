@@ -11,7 +11,7 @@ namespace Salud_Provincial.Entidades.Modelos
 
         public int TipoEstablecimientoId { get; set; }
 
-        /// <summary>Discriminador del Patrón Pool: a qué provincia pertenece el registro.</summary>
+        // Discriminador del Patrón Pool: a qué provincia pertenece el registro.
         public int ProvinciaId { get; set; }
 
         // Solo para mostrar en pantalla (se llenan con un JOIN).

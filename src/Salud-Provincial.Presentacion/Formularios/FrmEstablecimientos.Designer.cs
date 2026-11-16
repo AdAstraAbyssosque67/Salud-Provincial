@@ -25,7 +25,6 @@ namespace Salud_Provincial.Presentacion
             panelEncabezado = new Panel();
             lblTitulo = new Label();
             lblAmbito = new Label();
-            chkMostrarInactivos = new CheckBox();
             btnRefrescar = new BotonPildora();
             panelCuerpo = new Panel();
             tarjetaLista = new TarjetaBase();
@@ -66,7 +65,6 @@ namespace Salud_Provincial.Presentacion
             // 
             panelEncabezado.Controls.Add(lblTitulo);
             panelEncabezado.Controls.Add(lblAmbito);
-            panelEncabezado.Controls.Add(chkMostrarInactivos);
             panelEncabezado.Controls.Add(btnRefrescar);
             panelEncabezado.Dock = DockStyle.Top;
             panelEncabezado.Location = new Point(0, 0);
@@ -94,19 +92,6 @@ namespace Salud_Provincial.Presentacion
             lblAmbito.Size = new Size(60, 20);
             lblAmbito.TabIndex = 1;
             lblAmbito.Text = "Ámbito";
-            // 
-            // chkMostrarInactivos
-            // 
-            chkMostrarInactivos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            chkMostrarInactivos.AutoSize = true;
-            chkMostrarInactivos.ForeColor = Color.FromArgb(45, 55, 72);
-            chkMostrarInactivos.Location = new Point(756, 28);
-            chkMostrarInactivos.Name = "chkMostrarInactivos";
-            chkMostrarInactivos.Size = new Size(150, 24);
-            chkMostrarInactivos.TabIndex = 0;
-            chkMostrarInactivos.Text = "Mostrar inactivos";
-            chkMostrarInactivos.UseVisualStyleBackColor = true;
-            chkMostrarInactivos.CheckedChanged += chkMostrarInactivos_CheckedChanged;
             // 
             // btnRefrescar
             // 
@@ -443,7 +428,6 @@ namespace Salud_Provincial.Presentacion
         private Panel panelEncabezado;
         private Label lblTitulo;
         private Label lblAmbito;
-        private CheckBox chkMostrarInactivos;
         private BotonPildora btnRefrescar;
         private Panel panelCuerpo;
         private TarjetaBase tarjetaLista;

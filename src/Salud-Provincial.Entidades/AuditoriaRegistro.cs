@@ -1,6 +1,6 @@
 namespace Salud_Provincial.Entidades.Modelos
 {
-    /// <summary>Una fila de la bitácora de cambios (tabla Auditoria). Es de solo lectura.</summary>
+    // Una fila de la bitácora de cambios (tabla Auditoria). Es de solo lectura.
     public class AuditoriaRegistro
     {
         public long AuditoriaId { get; set; }

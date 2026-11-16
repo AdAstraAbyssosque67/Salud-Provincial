@@ -1,6 +1,6 @@
 namespace Salud_Provincial.Entidades.Modelos
 {
-    /// <summary>Una fila de la bitácora de accesos (tabla BitacoraAccesos).</summary>
+    // Una fila de la bitácora de accesos (tabla BitacoraAccesos).
     public class AccesoRegistro
     {
         public long AccesoId { get; set; }

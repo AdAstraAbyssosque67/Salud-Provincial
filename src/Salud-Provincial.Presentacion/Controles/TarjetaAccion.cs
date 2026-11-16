@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Salud_Provincial.Presentacion.Controles
 {
-    /// <summary>Tarjeta con título, texto descriptivo y botón píldora inferior.</summary>
+    // Tarjeta con título, texto descriptivo y botón píldora inferior.
     public class TarjetaAccion : TarjetaBase
     {
         private string _titulo = "", _texto = "", _textoBoton = "";

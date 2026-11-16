@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Salud_Provincial.Presentacion.Controles
 {
-    /// <summary>Panel con el degradado diagonal menta → azul cielo.</summary>
+    // Panel con el degradado diagonal menta → azul cielo.
     public class PanelDegradado : Panel
     {
         public PanelDegradado()

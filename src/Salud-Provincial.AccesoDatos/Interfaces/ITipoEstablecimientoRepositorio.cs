@@ -11,7 +11,7 @@ namespace Salud_Provincial.AccesoDatos.Interfaces
         bool Actualizar(TipoEstablecimiento tipo, int usuarioId);
         bool CambiarEstado(int tipoId, bool activo, int usuarioId);
 
-        /// <summary>Cantidad de establecimientos activos que usan este tipo (para validar antes de desactivarlo).</summary>
+        // Cantidad de establecimientos activos que usan este tipo (para validar antes de desactivarlo).
         int ContarEstablecimientosActivos(int tipoId);
     }
 }

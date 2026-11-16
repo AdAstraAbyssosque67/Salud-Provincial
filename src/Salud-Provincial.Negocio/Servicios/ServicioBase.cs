@@ -6,7 +6,7 @@ using Salud_Provincial.Negocio.Seguridad;
 
 namespace Salud_Provincial.Negocio.Servicios
 {
-    /// <summary>Código común de los servicios: control de permisos y traducción de errores.</summary>
+    // Código común de los servicios: control de permisos y traducción de errores.
     public abstract class ServicioBase
     {
         protected static SesionUsuario Sesion => SesionUsuario.Instancia;
@@ -24,14 +24,14 @@ namespace Salud_Provincial.Negocio.Servicios
                 throw new PermisoDenegadoException("Solo el administrador nacional puede realizar esta operación.");
         }
 
-        /// <summary>Alcance de provincias del usuario en sesión (lanza PermisoDenegadoException si no hay sesión).</summary>
+        // Alcance de provincias del usuario en sesión (lanza PermisoDenegadoException si no hay sesión).
         protected static AlcanceProvincia Alcance() => Sesion.ObtenerAlcance();
 
-        /// <summary>
-        /// Ejecuta una acción de acceso a datos y convierte sus errores técnicos en NegocioException,
-        /// para que la Presentación solo tenga que manejar un tipo de error.
-        /// </summary>
-        /// <param name="mensajeDuplicado">Mensaje amable si el error es un dato repetido (UNIQUE).</param>
+        // 
+        // Ejecuta una acción de acceso a datos y convierte sus errores técnicos en NegocioException,
+        // para que la Presentación solo tenga que manejar un tipo de error.
+        // 
+        // <param name="mensajeDuplicado">Mensaje amable si el error es un dato repetido (UNIQUE).</param>
         protected static T Ejecutar<T>(Func<T> accion, string? mensajeDuplicado = null)
         {
             try

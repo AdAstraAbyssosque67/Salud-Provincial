@@ -9,22 +9,22 @@ using Salud_Provincial.Entidades.Base;
 
 namespace Salud_Provincial.AccesoDatos.Repositorios
 {
-    /// <summary>
-    /// Código común de todos los repositorios: abre la conexión, ejecuta con parámetros,
-    /// la cierra siempre (using) y traduce los errores de SQL Server.
-    /// El SQL de los repositorios solo usa constantes y parámetros: nunca se concatenan valores del usuario.
-    /// </summary>
+    // 
+    // Código común de todos los repositorios: abre la conexión, ejecuta con parámetros,
+    // la cierra siempre (using) y traduce los errores de SQL Server.
+    // El SQL de los repositorios solo usa constantes y parámetros: nunca se concatenan valores del usuario.
+    // 
     public abstract class RepositorioBase
     {
         // ----- Parámetros -----
         protected static SqlParameter P(string nombre, object? valor)
             => new SqlParameter(nombre, valor ?? DBNull.Value);
 
-        /// <summary>Parámetro con tipo explícito (necesario cuando el valor puede ser NULL).</summary>
+        // Parámetro con tipo explícito (necesario cuando el valor puede ser NULL).
         protected static SqlParameter P(string nombre, SqlDbType tipo, object? valor)
             => new SqlParameter(nombre, tipo) { Value = valor ?? DBNull.Value };
 
-        /// <summary>Los dos parámetros que usa el filtro (@Todas = 1 OR ProvinciaId = @ProvinciaId).</summary>
+        // Los dos parámetros que usa el filtro (@Todas = 1 OR ProvinciaId = @ProvinciaId).
         protected static SqlParameter[] ParametrosAlcance(AlcanceProvincia alcance) => new[]
         {
             P("@Todas", alcance.VerTodas),
@@ -67,11 +67,11 @@ namespace Salud_Provincial.AccesoDatos.Repositorios
             }
         }
 
-        /// <summary>
-        /// INSERT + id generado. No se usa OUTPUT INSERTED porque SQL Server no lo permite en
-        /// tablas con triggers (y todas las tablas de SaludDB tienen triggers de auditoría).
-        /// SCOPE_IDENTITY solo ve el identity de esta sentencia, no el de la tabla Auditoria.
-        /// </summary>
+        // 
+        // INSERT + id generado. No se usa OUTPUT INSERTED porque SQL Server no lo permite en
+        // tablas con triggers (y todas las tablas de SaludDB tienen triggers de auditoría).
+        // SCOPE_IDENTITY solo ve el identity de esta sentencia, no el de la tabla Auditoria.
+        // 
         protected int InsertarYObtenerId(string sqlInsert, params SqlParameter[] parametros)
         {
             object? id = EjecutarEscalar(sqlInsert + " SELECT CAST(SCOPE_IDENTITY() AS INT);", parametros);

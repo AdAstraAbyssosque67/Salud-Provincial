@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Salud_Provincial.Presentacion.Controles
 {
-    /// <summary>Botón plano con esquinas redondeadas (estilo píldora).</summary>
+    // Botón plano con esquinas redondeadas (estilo píldora).
     public class BotonPildora : Button
     {
         private bool _hover, _presionado;

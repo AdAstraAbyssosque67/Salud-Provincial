@@ -31,6 +31,7 @@ namespace Salud_Provincial.Presentacion
             itemInicio = new ItemNavegacion();
             itemEstablecimientos = new ItemNavegacion();
             itemClave = new ItemNavegacion();
+            itemProvincias = new ItemNavegacion();
             itemCerrarSesion = new ItemNavegacion();
             panelContenido = new Panel();
             tlpDashboard = new TableLayoutPanel();
@@ -95,6 +96,7 @@ namespace Salud_Provincial.Presentacion
             tarjetaSidebar.Controls.Add(itemInicio);
             tarjetaSidebar.Controls.Add(itemEstablecimientos);
             tarjetaSidebar.Controls.Add(itemClave);
+            tarjetaSidebar.Controls.Add(itemProvincias);
             tarjetaSidebar.Controls.Add(itemCerrarSesion);
             tarjetaSidebar.Dock = DockStyle.Fill;
             tarjetaSidebar.Location = new Point(12, 12);
@@ -143,6 +145,17 @@ namespace Salud_Provincial.Presentacion
             itemClave.TabIndex = 3;
             itemClave.Text = "Cambiar contraseña";
             itemClave.Click += mnuCambiarClave_Click;
+            // 
+            // itemProvincias
+            //
+            itemProvincias.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            itemProvincias.Icono = TipoIcono.Edificio;
+            itemProvincias.Location = new Point(14, 166);
+            itemProvincias.Name = "itemProvincias";
+            itemProvincias.Size = new Size(238, 46);
+            itemProvincias.TabIndex = 4;
+            itemProvincias.Text = "Provincias y usuarios";
+            itemProvincias.Click += itemProvincias_Click;
             // 
             // itemCerrarSesion
             // 
@@ -199,7 +212,7 @@ namespace Salud_Provincial.Presentacion
             kpiActivos.Size = new Size(326, 146);
             kpiActivos.TabIndex = 0;
             kpiActivos.Titulo = "Establecimientos activos";
-            kpiActivos.FlechaClick += mnuEstablecimientos_Click;
+            kpiActivos.FlechaClick += kpiActivos_FlechaClick;
             // 
             // kpiInactivos
             // 
@@ -212,7 +225,7 @@ namespace Salud_Provincial.Presentacion
             kpiInactivos.Size = new Size(326, 146);
             kpiInactivos.TabIndex = 1;
             kpiInactivos.Titulo = "Establecimientos inactivos";
-            kpiInactivos.FlechaClick += mnuEstablecimientos_Click;
+            kpiInactivos.FlechaClick += kpiInactivos_FlechaClick;
             // 
             // kpiTipos
             // 
@@ -226,7 +239,7 @@ namespace Salud_Provincial.Presentacion
             kpiTipos.Size = new Size(328, 146);
             kpiTipos.TabIndex = 2;
             kpiTipos.Titulo = "Tipos de establecimiento";
-            kpiTipos.FlechaClick += mnuEstablecimientos_Click;
+            kpiTipos.FlechaClick += kpiTipos_FlechaClick;
             // 
             // tarjetaBienvenida
             // 
@@ -314,6 +327,7 @@ namespace Salud_Provincial.Presentacion
         private ItemNavegacion itemInicio;
         private ItemNavegacion itemEstablecimientos;
         private ItemNavegacion itemClave;
+        private ItemNavegacion itemProvincias;
         private ItemNavegacion itemCerrarSesion;
         private Panel panelContenido;
         private TableLayoutPanel tlpDashboard;
