@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../Salud-Provincial.AccesoDatos/Salud-Provincial.AccesoDatos.csproj" Id="7059f874-9469-4c0d-a52c-5ea413d5bdd0" />
+  <Project Path="../Salud-Provincial.Entidades/Salud-Provincial.Entidades.csproj" Id="df497e19-d786-415f-9145-70d8cb9fd417" />
+  <Project Path="../Salud-Provincial.Negocio/Salud-Provincial.Negocio.csproj" Id="b926589b-69d3-40b2-b25a-5e7697dc3409" />
+  <Project Path="Salud-Provincial.Presentacion.csproj" />
+</Solution>
